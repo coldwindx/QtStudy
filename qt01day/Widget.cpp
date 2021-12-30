@@ -7,6 +7,7 @@
 #include<QProgressBar>
 #include<QTextEdit>
 #include"Boss.h"
+#include<QMenuBar>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
