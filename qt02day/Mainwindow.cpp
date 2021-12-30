@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
         dialog->show();
         dialog->setAttribute(Qt::WA_DeleteOnClose);     // 设置关闭时释放
     });
+
 }
 
 MainWindow::~MainWindow()
