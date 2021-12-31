@@ -29,7 +29,9 @@ SOURCES += \
         Mainwindow.cpp
 
 HEADERS += \
-        Mainwindow.h
+        Mainwindow.h \
+        Strategy.h \
+        CalEntry.h
 
 FORMS += \
         mainwindow.ui

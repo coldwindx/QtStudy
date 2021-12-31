@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-enum BtnType{
-    Num, Op, Dot, Equal, Clear, Back
-};
+#include"Strategy.h"
+#include<QMap>
 namespace Ui {
     class MainWindow;
 }
@@ -19,9 +18,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QString numl, op, numr;
+    QVector<CalEntry> vc;
+
 public slots:
-    void onClicked(BtnType btnType, QString btn);
+    void onClicked(CalEnum op, QString val);
 };
 
 #endif // MAINWINDOW_H
