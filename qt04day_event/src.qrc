@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>png/zombie.png</file>
+        <file>png/creeper.png</file>
+        <file>png/skeleton.png</file>
+        <file>png/slime.png</file>
+        <file>png/witch.png</file>
+    </qresource>
+</RCC>

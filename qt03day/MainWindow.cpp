@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     // Setting volume from configuration
     ui->volumeSlider->setMaximum(100);
-    QSettings settings("./config/config.ini");
+    QSettings settings("./config/config.ini", QSettings::IniFormat);
     int value = settings.value("Volume").toInt();
     ui->volumeSlider->setValue(value);
     ui->label->setText(QString::number(value));
@@ -94,7 +94,7 @@ void MainWindow::onVolumeChanged(int value)
 MainWindow::~MainWindow()
 {
     // when window is closed, save volume to configuration
-    QSettings settings("./config/config.ini");
+    QSettings settings("./config/config.ini", QSettings::IniFormat);
     settings.setValue("Volume", ui->volumeSlider->value());
     delete ui;
 }
