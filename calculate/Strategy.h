@@ -186,4 +186,17 @@ class BackStrategy : public Strategy
         return 0;
     }
 };
+
+
+class ClearStrategy : public Strategy
+{
+    public:
+    void onClicked(QVector<CalEntry> & vc, QString & buf){
+        vc.clear();
+    }
+    double exec(double x, double y)
+    {
+        return 0;
+    }
+};
 #endif // STRATEGY_H
