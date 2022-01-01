@@ -164,4 +164,26 @@ public:
     }
 };
 
+class BackStrategy : public Strategy
+{
+    public:
+    void onClicked(QVector<CalEntry> & vc, QString & buf){
+        while(!vc.isEmpty())
+        {
+            if(vc.back().op != CalEnum::Num)
+            {
+                 vc.pop_back();
+                 break;
+            }
+            vc.back().val.chop(1);
+            if(vc.back().val.isEmpty())
+                vc.pop_back();
+            break;
+        }
+    }
+    double exec(double x, double y)
+    {
+        return 0;
+    }
+};
 #endif // STRATEGY_H

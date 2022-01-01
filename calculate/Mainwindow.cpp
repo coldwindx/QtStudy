@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     strategyCache[CalEnum::Div] = new DivStrategy();
     strategyCache[CalEnum::Dot] = new DotStrategy();
     strategyCache[CalEnum::Equal] = new EqualStrategy();
+    strategyCache[CalEnum::Back] = new BackStrategy();
 
     // connect num
     connect(ui->nbtn0, &QPushButton::clicked, [&](){ this->onClicked(CalEnum::Num, "0"); });
