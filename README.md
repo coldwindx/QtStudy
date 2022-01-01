@@ -38,3 +38,9 @@
 ### 非模态对话框
 &nbsp;&nbsp;非阻塞式创建对话框，可以对其他对话框操作。
 &nbsp;&nbsp;使用setAttribute(Qt::WA_DeleteOnClose)设置关闭时释放，防止内存泄露。
+## 图形绘制
+- 设置画家Painter
+- 设置画布painter->begin()【放在paintEvent轮询访问】
+- 配置画笔QPen
+- 开始绘制
+- 结束绘制painter->end【没有结束容易崩溃】

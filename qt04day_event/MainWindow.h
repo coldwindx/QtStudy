@@ -18,11 +18,12 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 protected:
+    virtual void timerEvent(QTimerEvent * event);
 //    virtual void mouseMoveEvent(QMouseEvent *event);
 //    virtual void mousePressEvent(QMouseEvent *event);
 private:
     Ui::MainWindow *ui;
-
+    int timer;
 };
 
 #endif // MAINWINDOW_H
