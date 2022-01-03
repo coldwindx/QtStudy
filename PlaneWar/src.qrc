@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/background.jpg</file>
+        <file>img/plane.png</file>
+        <file>img/start.png</file>
+        <file>img/start_background.jpg</file>
+    </qresource>
+</RCC>
