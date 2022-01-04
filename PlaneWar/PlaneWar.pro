@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,11 +27,20 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        Widget.cpp
+        Widget.cpp \
+    GameController.cpp \
+    GameObjectPool.cpp
 
 HEADERS += \
         Widget.h \
-    Plane.h
+    include/GameObject.h \
+    include/Bullet.h \
+    include/Plane.h \
+    include/Enemy.h \
+    include/Player.h \
+    GameDefine.h \
+    GameController.h \
+    GameObjectPool.h
 
 FORMS += \
         widget.ui

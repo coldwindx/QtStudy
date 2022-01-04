@@ -16,6 +16,8 @@
 &nbsp;&nbsp;emit用于触发信号，信号和槽的函数参数表需要一一对应，信号的参数表可以多于槽函数;信号可以连接信号<br>
 ## 常用控件
 ### QPushButton
+### QToolButton
+- 设置透明：QToolButton{border-style: flat;background: transparent;}
 ### QLabel
 ### Qslider
 ### QProgressBar
@@ -49,3 +51,12 @@
 - 一个场景可以包含多个元素，每个视图只能包含一个场景，每个窗口可以包含多个视图
 - 元素加入场景的顺序影响显示顺序
 - 视图需要绑定父亲窗口，否则出现额外窗口
+## 对象池
+&nbsp;&nbsp;对象被频繁创建或删除时，大量使用new和delete关键字处理堆内存，如果该对象比较大，则对计算机的消耗比较大，导致卡顿
+&nbsp;&nbsp;对象缓冲池，本质是个容器（工厂），预先缓存一定数量的对象，创建对象时直接从对象池取出。
+&nbsp;&nbsp;对象池可以暂时管理本应释放的对象，不销毁而回收，循环利用。
+&nbsp;&nbsp;窗口关闭时释放对象的两种方法1，把对象加入对象树2，在窗口closeEvent事件中处理
+
+## 音乐
+&nbsp;&nbsp;需要添加QT += multimedia
+&nbsp;&nbsp;注意QUrl路径对象的字符串格式"qrc:/+前缀+路径"
