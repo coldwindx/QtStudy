@@ -169,7 +169,7 @@ void GameController::bulletMove()
             // 从场景移除
             this->gScene.removeItem(bullets[i]);
             // 回收对象，防止内存泄露
-//            pool->recoverBullet(bullets[i]);
+            pool->recoverBullet(bullets[i]);
             // 从容器移除
             bullets.removeAt(i);
             continue;
@@ -183,9 +183,8 @@ void GameController::bulletMove()
                 this->gScene.removeItem(bullets[i]);
                 this->gScene.removeItem(enemies[j]);
                 // 回收对象，防止内存泄露
-//                GameObjectPool * pool = GameObjectPool::getInstance();
-//                pool->recoverBullet(bullets[i]);
-//                pool->recoverEnemy(enemies[j]);
+                pool->recoverBullet(bullets[i]);
+                pool->recoverEnemy(enemies[j]);
                 // 从容器移除
                 bullets.removeAt(i);
                 enemies.removeAt(j);
@@ -198,9 +197,9 @@ void GameController::createEnemy()
 {
     // 敌机
     QPixmap img("://img/enemy.png");
-    int x = qrand() % (512 - img.width());
-//    Enemy * enemy = new Enemy(QPoint(x, -100), img);
-    Enemy * enemy = GameObjectPool::getInstance()->creaeteEnemy();
+    int x = qrand() % (GameDefine::ScreenWidth - img.width());
+    Enemy * enemy = new Enemy(QPoint(x, -100), img);
+//    Enemy * enemy = GameObjectPool::getInstance()->creaeteEnemy();
     enemy->init(QPoint(x, -100), img);
     // 显示
     this->gScene.addItem(enemy);
@@ -214,12 +213,14 @@ void GameController::enemyMove()
     for(int i = 0, size = enemies.size(); i < size; ++i)
     {
         enemies[i]->move(QPoint(0, 1));
+        qDebug() << "A enemy is moving!";
         if(enemies[i]->check() == false)
         {
+            qDebug() << "A enemy is released!";
             // 从场景移除
             this->gScene.removeItem(enemies[i]);
             // 回收对象，防止内存泄露
-//            pool->recoverEnemy(enemies[i]);
+            pool->recoverEnemy(enemies[i]);
             // 从容器移除
             enemies.removeAt(i);
         }

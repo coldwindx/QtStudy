@@ -26,7 +26,7 @@ public:
         // 播放音效
         if(bulletType == Player)
             mediaPlayer.setMedia(QUrl("qrc:/music/bullet.mp3"));
-//        mediaPlayer.play();
+        mediaPlayer.play();
     }
 
     ~Bullet()
@@ -42,7 +42,7 @@ public:
         // 播放音效
         if(bulletType == Player)
             mediaPlayer.setMedia(QUrl("qrc:/music/bullet.mp3"));
-//        mediaPlayer.play();
+        mediaPlayer.play();
     }
 
     void move(QPoint dir)

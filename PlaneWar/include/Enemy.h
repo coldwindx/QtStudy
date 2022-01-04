@@ -30,6 +30,15 @@ public:
         dir *= this->moveSpeed;
         this->moveBy(dir.x(), dir.y());
     }
+
+    virtual bool check()
+    {
+        int height = this->pixmap().height();
+        // 边界检测
+        if(GameDefine::Screenheight + height < this->y())
+            return false;
+        return true;
+    }
 };
 
 #endif // ENEMY_H
