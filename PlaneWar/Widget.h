@@ -23,6 +23,7 @@ private:
 
     virtual void keyPressEvent(QKeyEvent *e);           // 按键监听
     virtual void keyReleaseEvent(QKeyEvent *e);
+    virtual void closeEvent(QCloseEvent *event);
 };
 
 #endif // WIDGET_H

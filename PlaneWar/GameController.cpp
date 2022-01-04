@@ -59,8 +59,6 @@ void GameController::GameInit()
     loadGameScene();
     // 显示视图
     view->show();
-    // 初始化对象池
-    GameObjectPool::getInstance()->init();
     // 背景移动定时器
     bgTimer = new QTimer(this);
     connect(bgTimer, &QTimer::timeout, this, &GameController::backgroundMove);
@@ -177,18 +175,19 @@ void GameController::bulletMove()
         // 碰撞检测
         for(int j = 0; j < enemies.size(); ++j)
         {
-            if(bullets[i]->collidesWithItem(enemies[j]))
-            {
-                // 从场景移除
-                this->gScene.removeItem(bullets[i]);
-                this->gScene.removeItem(enemies[j]);
-                // 回收对象，防止内存泄露
-                pool->recoverBullet(bullets[i]);
-                pool->recoverEnemy(enemies[j]);
-                // 从容器移除
-                bullets.removeAt(i);
-                enemies.removeAt(j);
-            }
+            if(!bullets[i]->collidesWithItem(enemies[j]))
+                continue;
+            // 从场景移除
+            this->gScene.removeItem(bullets[i]);
+            this->gScene.removeItem(enemies[j]);
+            // 回收对象，防止内存泄露
+            pool->recoverBullet(bullets[i]);
+            pool->recoverEnemy(enemies[j]);
+            // 从容器移除
+            bullets.removeAt(i);
+            enemies.removeAt(j);
+            // 此时bullets[i]已经被释放，下一轮访问可能出错
+            break;
         }
     }
 }
@@ -198,8 +197,8 @@ void GameController::createEnemy()
     // 敌机
     QPixmap img("://img/enemy.png");
     int x = qrand() % (GameDefine::ScreenWidth - img.width());
-    Enemy * enemy = new Enemy(QPoint(x, -100), img);
-//    Enemy * enemy = GameObjectPool::getInstance()->creaeteEnemy();
+//    Enemy * enemy = new Enemy(QPoint(x, -100), img);
+    Enemy * enemy = GameObjectPool::getInstance()->creaeteEnemy();
     enemy->init(QPoint(x, -100), img);
     // 显示
     this->gScene.addItem(enemy);
@@ -210,13 +209,11 @@ void GameController::createEnemy()
 void GameController::enemyMove()
 {
     GameObjectPool * pool = GameObjectPool::getInstance();
-    for(int i = 0, size = enemies.size(); i < size; ++i)
+    for(int i = 0; i < enemies.size(); ++i)
     {
         enemies[i]->move(QPoint(0, 1));
-        qDebug() << "A enemy is moving!";
         if(enemies[i]->check() == false)
         {
-            qDebug() << "A enemy is released!";
             // 从场景移除
             this->gScene.removeItem(enemies[i]);
             // 回收对象，防止内存泄露

@@ -33,6 +33,12 @@ void Widget::keyReleaseEvent(QKeyEvent *e)
     GameController::getInstance()->removeOneKey(e->key());
 }
 
+void Widget::closeEvent(QCloseEvent *event)
+{
+    // 释放对象池
+    delete GameObjectPool::getInstance();
+}
+
 Widget::~Widget()
 {
     delete ui;

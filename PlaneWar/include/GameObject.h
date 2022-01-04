@@ -8,7 +8,17 @@
 class GameObject : public QGraphicsPixmapItem
 {
 public:
-    explicit GameObject(QObject *parent = nullptr) { }
+    explicit GameObject(QObject *parent = nullptr)
+    {
+        static int num = 0;
+        qDebug() << "The " << ++num << "th object is created!";
+    }
+
+    ~GameObject()
+    {
+        static int num = 0;
+        qDebug() << "The " << ++num << "th object is released!";
+    }
 
     virtual bool check()
     {

@@ -9,9 +9,8 @@ int main(int argc, char *argv[])
     Widget w;
     w.show();
     // 游戏加载
-//    GameObjectPool::getInstance()->init();
+    GameObjectPool::getInstance()->init();
     GameController::getInstance()->GameInit();
-
 
     return a.exec();
 }

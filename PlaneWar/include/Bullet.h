@@ -29,10 +29,7 @@ public:
         mediaPlayer.play();
     }
 
-    ~Bullet()
-    {
-        qDebug() << "This bullet is released!";
-    }
+    ~Bullet() {}
 
     void init(QPoint & pos, const QPixmap & img, BulletType type)
     {
