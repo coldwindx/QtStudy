@@ -68,3 +68,42 @@
 - 1. 单播 （一对一）
 - 2. 组播 （一对多）
 - 3. 广播 （公告）
+## 数据库
+驱动层 ---> SQL API层 ---> 用户接口层
+```c++
+
+    db = QSqlDatabase::addDatabase("QSQLITE");  // 连接SQLite数据库
+    db.setDatabaseName("test.db");              // 更名数据库文件
+    if(!db.open())                              // 打开数据库
+    {
+        qDebug() << "Error failed to open:" << db.lastError();
+    }
+    QSqlQuery query;                            // 自动完成数据库绑定
+    // 创建表
+    QString sqlCreate = QString("create table staff(id integer primary key autoincrement, name varchar(20), age int);");
+    query.exec(sqlCreate);
+
+    // 插入数据
+    QString sqlInsert = "insert into staff (name, age) values ('Jack', 20);";
+    if(!query.exec(sqlInsert)) qDebug() << "Insertion failed!";
+
+    // 查询数据
+    QString sqlQuery = "select * from staff;";
+    if(!query.exec(sqlQuery)) qDebug() << "Inquiration failed!";
+    else {
+        while(query.next())
+        {
+            qDebug() << query.value("name").toString();
+            qDebug() << query.value("age").toInt();
+        }
+    }
+
+    // 删除数据
+    QString sqlDelete = "delete from staff where id = 1;";
+    if(!query.exec(sqlDelete)) qDebug() << "Deletion failed!";
+
+    // 更新数据
+    QString sqlUpdate = "update staff set name = 'Alices' where id = 2;";
+    if(!query.exec(sqlUpdate)) qDebug() << "Updation failed!" << query.lastError();
+
+```
