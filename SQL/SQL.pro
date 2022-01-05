@@ -27,16 +27,24 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     MainWindow.cpp \
-    ItemWindow.cpp
+    ItemWindow.cpp \
+    QueryWidget.cpp \
+    ModelWidget.cpp \
+    DBGlobal.cpp
 
 HEADERS += \
     MainWindow.h \
     ItemWindow.h \
-    Staff.h
+    Staff.h \
+    QueryWidget.h \
+    ModelWidget.h \
+    DBGlobal.h
 
 FORMS += \
         MainWindow.ui \
-    ItemWindow.ui
+    ItemWindow.ui \
+    QueryWidget.ui \
+    ModelWidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

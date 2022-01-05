@@ -1,4 +1,6 @@
 #include "MainWindow.h"
+#include "QueryWidget.h"
+#include "ModelWidget.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
