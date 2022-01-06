@@ -9,9 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Create threads
-    Generate * generate = new Generate();
-    BubbleSort * bubble = new BubbleSort();
-    QuickSort * quick = new QuickSort();
+    Generate * generate = new Generate(this);
+    BubbleSort * bubble = new BubbleSort(this);
+    QuickSort * quick = new QuickSort(this);
     // Stare threads
         // 这里lambda表达式引用Thread必须使用值引用
     connect(ui->startBtn, &QPushButton::clicked, this, [=](){
