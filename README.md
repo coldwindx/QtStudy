@@ -107,3 +107,5 @@
     if(!query.exec(sqlUpdate)) qDebug() << "Updation failed!" << query.lastError();
 
 ```
+## 多线程
+子线程通知主线程，主线程设置窗口，不允许越级访问。<br>
